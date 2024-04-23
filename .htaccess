@@ -1,0 +1,30 @@
+# BEGIN WordPress
+# Les directives (lignes) entre « BEGIN WordPress » et « END WordPress » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /FORMATION-KALANSO/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /FORMATION-KALANSO/index.php [L]
+</IfModule>
+
+# END WordPress
+
+# Backup Migration START
+  <IfModule mod_rewrite.c>
+
+    RewriteEngine On
+    RewriteRule .* - [E=noabort:1]
+    RewriteRule .* - [E=noconntimeout:1]
+
+  </IfModule>
+  <IfModule mod_env>
+
+    SetEnv noabort 1
+
+  </IfModule>
+# Backup Migration END
